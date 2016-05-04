@@ -70,28 +70,4 @@ class Graph(object):
             for neighbour in self.__graph[node]:
                 if {neighbour, node} not in edges:
                     edges.append({node, neighbour})
-                    return edges
-
-                    # def __str__(self):
-                    #     res = "vertices: "
-                    #     for k in self.__graph:
-                    #         res += str(k) + " "
-                    #     res += "\nedges: "
-                    #     for edge in self.get_edges():
-                    #         res += str(edge) + " "
-                    #     return res
-                    g={"a": ["d"],
-                        "b": ["c"],
-                        "c": ["b", "c", "d", "e"],
-                       "d": ["a", "c"],
-                       "e": ["c"],
-                       "f": []
-                       }
-
-                    # graph1 = Graph(g)
-                    # print graph1.nodes()
-                    # print graph1.get_edges()
-                    # print graph1.add_edge({'A', 'B'})
-                    # print graph1.get_edges()
-                    # print graph1.remove_vertex('c')
-                    # print graph1.add_edge
+        return edges
