@@ -19,11 +19,11 @@ class GraphTest(TestCase):
         self.assertEquals(initialized_graph._Graph__graph, graph_values)
         initialized_graph._Graph__graph.clear()
 
-    def test_add_node(self):
+    def test_add_vertices(self):
         graph_add = graph.Graph()
         node = "A"
-        graph_add.add_vertex(node)
-        self.assertTrue(graph_add._Graph__graph)
+        graph_add.add_vertices(node)
+        self.assertTrue(graph_add._Graph__graph,  )
         graph_add._Graph__graph.clear()
 
     def test_remove_node(self):
@@ -43,5 +43,17 @@ class GraphTest(TestCase):
     def test_add_edge_bad_spec(self):
         graph_edge = graph.Graph({'A': [], 'B': [], 'C': []})
         edge = ['A']
-        self.assertFalse(graph_edge.add_edge(edge))
+        self.assertFalse(graph_edge.add_edge(edge), None)
         graph_edge._Graph__graph.clear()
+
+    def test_dfs(self):
+        graph_traverse = graph.Graph({'A': ['B', 'C'], 'B': ['A', 'D', 'E'], 'C': ['A', 'F', 'G'], 'D': ['B'], 'E': ['B'], 'F': ['C'], 'G': ['C']})
+        path = ['A', 'B', 'D', 'E', 'C', 'F', 'G']
+        self.assertEquals(graph_traverse.dfs('A'), path)
+        graph_traverse._Graph__graph.clear()
+
+    def test_bfs(self):
+        graph_traverse = graph.Graph({'A': ['B', 'C'], 'B': ['A', 'D', 'E'], 'C': ['A', 'F', 'G'], 'D': ['B'], 'E': ['B'], 'F': ['C'], 'G': ['C']})
+        path = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+        self.assertEqual(graph_traverse.bfs('A'), path)
+        graph_traverse._Graph__graph.clear()
