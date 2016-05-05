@@ -8,32 +8,35 @@ A graph can be directed or undirected. Directed graph is one in which edges conn
 ## Features
 This library has the following methods:
 
-*init(self, __graph={}):* This constructor initializes the class. The __ preceding the method makes rhe instance varuable graph to be private, therefore it can't be accessed outside the class. Initializing the class without an input will create an empty dictionary.
+**init(self, __graph={}):** This constructor initializes the class. The __ preceding the method makes rhe instance varuable graph to be private, therefore it can't be accessed outside the class. Initializing the class without an input will create an empty dictionary.
 
-*add_vertices(self, *args):* This method adds a vertex or vertices to the graph depending the input as a string. The vertices represent the keys in the graph dictionary.
+**add_vertices(self, *args):** This method adds a vertex or vertices to the graph depending the input as a string. The vertices represent the keys in the graph dictionary.
 
 *vertices(self):* This method outputs all the vertices in the graph. The user doesn't have to supply any parameters as they are obtained from the graph created.
 
-*remove_vertex(self, node):* This method removes a node from the graph dictionary,
+**remove_vertex(self, node):** This method removes a node from the graph dictionary,
 together with all edges connected to it provided that node exists.
 
-*adjacent_vertices(self, node):* This method returns all of the vertices that are
+**adjacent_vertices(self, node):** This method returns all of the vertices that are
 adjacent to the specified vertex.
 
-*add_edge(self, node ):* Adds one edge which is of type list and between two nodes there can be multiple edges butthis method works only if the nodes connecting the edges are present.
+**add_edge(self, node ):** Adds one edge which is of type list and between two nodes there can be multiple edges butthis method works only if the nodes connecting the edges are present.
 
-*add_edges(self, edge_tuple):* This method allows you to add a tuple of lists of vertices but the nodes connecting the edges have to be present in the in the dictionary containing the graph.
+**add_edges(self, edge_tuple):** This method allows you to add a tuple of lists of vertices but the nodes connecting the edges have to be present in the in the dictionary containing the graph.
 
-*get_edges(self):* This method generates the edges of the graph "__graph". Edges are represented as tuples.
+**get_edges(self):** This method generates the edges of the graph "__graph". Edges are represented as tuples.
 
-*bfs(self, start, end=None):*This methode implements graph traversal using
+**bfs(self, start, end=None):**This methode implements graph traversal using
 breadth first search algorithm. If you specify the end node it will give the path from the start node to end node otherwise if end node is not specified the path to the end of the graph is provided.
 
-*dfs(self, start, end=None):*This method implements graph traversal using depth first search algorithm. If you specify the end node it will give the path from the start node to end node otherwise if end node is not specified the path to the end of the graph is provided.
+**dfs(self, start, end=None):**This method implements graph traversal using depth first search algorithm. If you specify the end node it will give the path from the start node to end node otherwise if end node is not specified the path to the end of the graph is provided.
 
-*generate_graph(self):* This method generates a graph in a DOT format to enable visualization of the graph.
+**generate_graph(self):** This method generates a graph in a DOT format to enable visualization of the graph.
 
-*draw_graph(self):This method creates a file containing the graph with a .gv extension for use in graphviz software for drawing the graph directly in an editor.
+**draw_graph(self):**This method creates a file containing the graph with a .gv extension for use in graphviz software for drawing the graph directly in an editor.
+
+An example of generated graph is below:
+![graph](/bc-7-graph_library/graphlibrary/graph_image.png)
 
 
 

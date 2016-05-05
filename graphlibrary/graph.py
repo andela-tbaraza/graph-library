@@ -191,27 +191,3 @@ class Graph(object):
         return self.draw_image("graph_image", graph_image)
 
 
-g = Graph({'A': ['B', 'C'], 'B': ['A', 'D', 'E'], 'C': ['A', 'F', 'G'], 'D': ['B'], 'E': ['B'], 'F': ['C'], 'G': ['C']})
-# print g.nodes()
-# l = Graph()
-# print l.add_vertices('A', 'B', 'C')
-# print l.vertices()
-# print l.add_edge(['A', 'B'])
-# n = g.nodes
-# print g.add_edge('L')
-# print l.add_edges((['A', 'B'], ['A', 'C']))
-# print l.get_edge()
-
-# print g.nodes()
-# print g.dfs('A')
-print g.bfs('A', 'D')
-# print g.remove_vertex('B')
-# print g.nodes()
-# print g.dfs()
-print g.get_edge()
-# a = g.get_graph()
-# nx.draw(a)
-# print g.get_graph()
-# print g.generate_graph_image()
-# print g.draw_image('try', str(['A', 'C', 'B', 'E', 'D', 'G', 'F']))
-# g.view_image()
