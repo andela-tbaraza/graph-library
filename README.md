@@ -12,7 +12,7 @@ This library has the following methods:
 
 **add_vertices(self, *args):** This method adds a vertex or vertices to the graph depending the input as a string. The vertices represent the keys in the graph dictionary.
 
-*vertices(self):* This method outputs all the vertices in the graph. The user doesn't have to supply any parameters as they are obtained from the graph created.
+**vertices(self):** This method outputs all the vertices in the graph. The user doesn't have to supply any parameters as they are obtained from the graph created.
 
 **remove_vertex(self, node):** This method removes a node from the graph dictionary,
 together with all edges connected to it provided that node exists.
@@ -35,8 +35,6 @@ breadth first search algorithm. If you specify the end node it will give the pat
 
 **draw_graph(self):**This method creates a file containing the graph with a .gv extension for use in graphviz software for drawing the graph directly in an editor.
 
-An example of generated graph is below:
-![graph](/bc-7-graph_library/graphlibrary/graph_image.png)
 
 
 

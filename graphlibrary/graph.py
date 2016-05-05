@@ -190,4 +190,3 @@ class Graph(object):
         graph_image = self.generate_graph_image()
         return self.draw_image("graph_image", graph_image)
 
-
