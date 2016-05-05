@@ -192,24 +192,3 @@ class Graph(object):
 
 
 
-g = Graph({'A': ['B', 'C'], 'B': ['A', 'D', 'E'], 'C': ['A', 'F', 'G'], 'D': ['B'], 'E': ['B'], 'F': ['C'], 'G': ['C']})
-# print g.nodes()
-# n = g.nodes
-# print g.add_edge('L')
-# print g.add_edges((['A', 'C'], ['B', 'D']))
-# print g.get_edge()
-# print g.nodes()
-# print g.dfs('A')
-# print g.bfs('A')
-# print g.remove_vertex('B')
-# print g.nodes()
-# print g.dfs()
-# print g.get_edges()
-# a = g.get_graph()
-# nx.draw(a)
-# print g.get_graph()
-print g.generate_graph_image()
-# print g.draw_image('try', str(['A', 'C', 'B', 'E', 'D', 'G', 'F']))
-g.view_image()
-
-
