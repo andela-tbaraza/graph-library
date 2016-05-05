@@ -29,9 +29,9 @@ class GraphTest(TestCase):
     def test_remove_node(self):
         graph_remove = graph.Graph(
             {'A': ['B', 'C'], 'B': ['A', 'E', 'D'], 'C': ['B', 'C']})
-        node = "B"
+        node = "A"
         graph_remove.remove_vertex(node)
-        self.assertTrue(graph_remove._Graph__graph)
+        self.assertEqual(graph_remove._Graph__graph, "node A and its children has been removed")
         graph_remove._Graph__graph.clear()
 
     def test_add_edge_correct_spec(self):
@@ -57,3 +57,6 @@ class GraphTest(TestCase):
         path = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
         self.assertEqual(graph_traverse.bfs('A'), path)
         graph_traverse._Graph__graph.clear()
+
+
+
