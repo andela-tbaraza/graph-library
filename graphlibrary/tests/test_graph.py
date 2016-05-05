@@ -23,15 +23,14 @@ class GraphTest(TestCase):
         graph_add = graph.Graph()
         node = "A"
         graph_add.add_vertices(node)
-        self.assertTrue(graph_add._Graph__graph,  )
+        self.assertTrue(graph_add._Graph__graph, )
         graph_add._Graph__graph.clear()
 
     def test_remove_node(self):
         graph_remove = graph.Graph(
-            {'A': ['B', 'C'], 'B': ['A', 'E', 'D'], 'C': ['B', 'C']})
-        node = "A"
-        graph_remove.remove_vertex(node)
-        self.assertEqual(graph_remove._Graph__graph, "node A and its children has been removed")
+            {'A': ['B', 'C'], 'B': ['A', 'E', 'D'], 'C': ['B', 'D']})
+        node = "B"
+        self.assertEqual(graph_remove.remove_vertex(node), "node B has been removed")
         graph_remove._Graph__graph.clear()
 
     def test_add_edge_correct_spec(self):

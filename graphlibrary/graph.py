@@ -34,15 +34,14 @@ class Graph(object):
         together with all edges connected to it provided that
         node exists.
         """
-        for node in self.__graph:
+        if node in self.__graph:
             connections = self.__graph[node]
-            del self.__graph[node]  # deletes the item in this index, (node)
+            del self.__graph[node]  # deletes the node and the edges
             for vertex in connections:
-                if vertex == node:
-                    continue
-                else:
+                if node in self.__graph:
                     self.__graph[vertex].remove(node)
-            return "node {} and its children has been removed".format(node)
+
+        return "node {} has been removed".format(node)
 
     def adjacent_vertices(self, node):
     	"""This method returns all of the vertices that are
@@ -57,38 +56,34 @@ class Graph(object):
         are present
           """
         if type(edge) == list and len(edge) == 2:
-            if edge[0] != edge[1]:
+            if edge[0] and edge[1] in self.__graph:
                 self.__graph[edge[0]].append(edge[1])
                 self.__graph[edge[1]].append(edge[0])
-            else:
-                self.__graph[edge[0]].append(edge[1])
             return True
         return False
 
     def add_edges(self, edge_tuple):
      	"""This method allows you to add a tuple of lists of vertices
           but the nodes connecting the edges have to be present
-          in the in the dictionary containing the graph
+          in the in the dictionary containing the graph.
           """
         if type(edge_tuple) == tuple:
             for edge_list in edge_tuple:
                     if edge_list[0] != edge_list[1]:
                         self.__graph[edge_list[0]].append(edge_list[1])
                         self.__graph[edge_list[1]].append(edge_list[0])
-                    else:
-                        self.__graph[edge_list[0]] = edge_list[1]
+            return True
+        return False
 
-    def get_edge(self):
+    def get_edges(self):
         """ This method generates the edges of the
-        graph "__graph". Edges are represented as sets
-        with one (a loop back to the vertex) or two
-        vertices
+        graph "__graph". Edges are represented as tuples
         """
         edges = []
         for node in self.__graph:
             for neighbour in self.__graph[node]:
-                if [node, neighbour] not in edges:
-                    edges.append([node, neighbour])
+                if (node, neighbour) not in edges:
+                    edges.append((node, neighbour))
         return edges
 
     def get_graph(self):
@@ -96,7 +91,10 @@ class Graph(object):
 
     def bfs(self, start, end=None):
         """This methode implements graph traversal using
-        breadth first search algorithm.
+        breadth first search algorithm. If you specify the
+        end node it will give the path from the start node
+        to end node otherwise if end node is not specified
+        the path to the end of the graph is provided.
         """
         path = []
         queue = deque([start])
@@ -108,12 +106,11 @@ class Graph(object):
 
             path.append(vertex)
 
-            push_list = [node for node in self.__graph[vertex] if node not in path]
-            queue.extend(push_list)
+            READY = [node for node in self.__graph[vertex] if node not in path]
+            queue.extend(READY)
 
             if vertex == end:
                 return path
-
 
         if end == None:
             return path
@@ -122,20 +119,23 @@ class Graph(object):
 
     def dfs(self, start, end=None):
         """This method implements graph traversal using
-        depth first search algorithm
+        depth first search algorithm. If you specify the
+        end node it will give the path from the start node
+        to end node otherwise if end node is not specified
+        the path to the end of the graph is provided.
         """
         path = []
         stack = [start]
 
-        while stack:
+        while len(stack) > 0:
             vertex = stack.pop()
             if vertex in path:
                 continue
 
             path.append(vertex)
 
-            push_list = [ node for node in self.__graph[vertex] if node not in path]
-            stack.extend(push_list[::-1])
+            READY = [ node for node in self.__graph[vertex] if node not in path]
+            stack.extend(READY[::-1])
 
             if vertex == end:
                 return path
@@ -185,10 +185,33 @@ class Graph(object):
     def view_graph(self):
     	"""This method creates a file containing the graph with
         a .gv extension for use in graphviz software for drawing
-        the graph.
+        the graph directly in an editor.
         """
         graph_image = self.generate_graph_image()
         return self.draw_image("graph_image", graph_image)
 
 
+g = Graph({'A': ['B', 'C'], 'B': ['A', 'D', 'E'], 'C': ['A', 'F', 'G'], 'D': ['B'], 'E': ['B'], 'F': ['C'], 'G': ['C']})
+# print g.nodes()
+# l = Graph()
+# print l.add_vertices('A', 'B', 'C')
+# print l.vertices()
+# print l.add_edge(['A', 'B'])
+# n = g.nodes
+# print g.add_edge('L')
+# print l.add_edges((['A', 'B'], ['A', 'C']))
+# print l.get_edge()
 
+# print g.nodes()
+# print g.dfs('A')
+print g.bfs('A', 'D')
+# print g.remove_vertex('B')
+# print g.nodes()
+# print g.dfs()
+print g.get_edge()
+# a = g.get_graph()
+# nx.draw(a)
+# print g.get_graph()
+# print g.generate_graph_image()
+# print g.draw_image('try', str(['A', 'C', 'B', 'E', 'D', 'G', 'F']))
+# g.view_image()
