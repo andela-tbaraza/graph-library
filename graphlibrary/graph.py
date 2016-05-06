@@ -23,7 +23,7 @@ class Graph(object):
         for node in args:
             if node not in self.__graph:
                 self.__graph[node] = []
-        return self
+        # return self
 
     def vertices(self):
         """ returns the nodes of a graph """
@@ -59,8 +59,8 @@ class Graph(object):
             if edge[0] and edge[1] in self.__graph:
                 self.__graph[edge[0]].append(edge[1])
                 self.__graph[edge[1]].append(edge[0])
-            return True
-        return False
+            return "Edge created"
+        return "Wrong input"
 
     def add_edges(self, edge_tuple):
      	"""This method allows you to add a tuple of lists of vertices
@@ -162,8 +162,11 @@ class Graph(object):
                             graph_image += str(key) + " -- " + str(value) + "; "
 
             graph_image += "}"
+            import webbrowser
+            webbrowser.open('http://www.webgraphviz.com/')
 
         return graph_image
+
 
     def generate_graph_traversal(self, path):
         """This method converts the traversed path into a
@@ -172,8 +175,9 @@ class Graph(object):
         path_image = "graph { "
         path_image += " -- ".join(path)
         path_image += "; }"
+        return path_image
 
-    def draw_image(self, image_name, node_list):
+    def generate_image_file(self, image_name, node_list):
     	"""This method generates the file to be used
         for visualization.
         """
@@ -183,10 +187,9 @@ class Graph(object):
         image_file.close()
 
     def view_graph(self):
-    	"""This method creates a file containing the graph with
+    	"""This method creates a file directly in containing the graph with
         a .gv extension for use in graphviz software for drawing
-        the graph directly in an editor.
+        the graph.
         """
-        graph_image = self.generate_graph_image()
-        return self.draw_image("graph_image", graph_image)
-
+        graph_image = self.generate_graph()
+        return self.generate_image_file("graph_image", graph_image)
