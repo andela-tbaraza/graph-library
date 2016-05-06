@@ -155,11 +155,11 @@ class Graph(object):
             graph_image = "graph { "
             for key in self.__graph:
                 if self.__graph[key] == []:
-                    graph_image += str(key) + "; "
+                    graph_image += key + "; "
                 else:
                     for value in self.__graph[key]:
                         if value >= key:
-                            graph_image += str(key) + " -- " + str(value) + "; "
+                            graph_image += key + " -- " + value + "; "
 
             graph_image += "}"
             import webbrowser
@@ -175,6 +175,7 @@ class Graph(object):
         path_image = "graph { "
         path_image += " -- ".join(path)
         path_image += "; }"
+
         return path_image
 
     def generate_image_file(self, image_name, node_list):
@@ -188,7 +189,7 @@ class Graph(object):
 
     def view_graph(self):
     	"""This method creates a file directly in containing the graph with
-        a .gv extension for use in graphviz software for drawing
+        a .gv extension for use in graphviz package for drawing
         the graph.
         """
         graph_image = self.generate_graph()
