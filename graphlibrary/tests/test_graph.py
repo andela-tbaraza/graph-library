@@ -42,7 +42,7 @@ class GraphTest(TestCase):
     def test_add_edge_bad_spec(self):
         graph_edge = graph.Graph({'A': [], 'B': [], 'C': []})
         edge = ['A']
-        self.assertFalse(graph_edge.add_edge(edge), None)
+        self.assertEqual(graph_edge.add_edge(edge), 'Wrong input')
         graph_edge._Graph__graph.clear()
 
     def test_dfs(self):
