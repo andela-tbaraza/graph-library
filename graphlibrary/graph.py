@@ -163,6 +163,8 @@ class Graph(object):
 
             graph_image += "}"
 
+        import webbrowser
+        webbrowser.open('http://www.webgraphviz.com/')
         return graph_image
 
 
