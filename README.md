@@ -32,13 +32,11 @@ breadth first search algorithm. If you specify the end node it will give the pat
 **dfs(self, start, end=None):**This method implements graph traversal using depth first search algorithm. If you specify the end node it will give the path from the start node to end node otherwise if end node is not specified the path to the end of the graph is provided.
 
 **generate_graph(self):** This method generates a graph in a DOT format to enable visualization of the graph. Use this web interface to view you graph [view_graph](http://www.webgraphviz.com/).
-An example
-      ![example](http://www.webgraphviz.com/)
 
 **draw_graph(self):**This method creates a file containing the graph with a .gv extension for use in graphviz software for drawing the graph directly in an editor.
 
-## To view a demonstration of the library view click on the link below to to view the video. ##
-[graph-video](https://asciinema.org/a/csq09waj2siochp1o3w87ev0v)
+**To view a demonstration of the library view click on the link below to to view the video.**
+        *[graph-video](https://asciinema.org/a/csq09waj2siochp1o3w87ev0v)
 
 
 
