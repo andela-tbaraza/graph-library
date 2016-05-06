@@ -23,7 +23,7 @@ class Graph(object):
         for node in args:
             if node not in self.__graph:
                 self.__graph[node] = []
-        # return self
+        return self
 
     def vertices(self):
         """ returns the nodes of a graph """
@@ -54,7 +54,7 @@ class Graph(object):
         and between two nodes there can be multiple edges but
         this method works only if the nodes connecting the edge
         are present
-          """
+        """
         if type(edge) == list and len(edge) == 2:
             if edge[0] and edge[1] in self.__graph:
                 self.__graph[edge[0]].append(edge[1])
@@ -66,7 +66,7 @@ class Graph(object):
      	"""This method allows you to add a tuple of lists of vertices
           but the nodes connecting the edges have to be present
           in the in the dictionary containing the graph.
-          """
+        """
         if type(edge_tuple) == tuple:
             for edge_list in edge_tuple:
                     if edge_list[0] != edge_list[1]:
@@ -162,8 +162,6 @@ class Graph(object):
                             graph_image += key + " -- " + value + "; "
 
             graph_image += "}"
-            import webbrowser
-            webbrowser.open('http://www.webgraphviz.com/')
 
         return graph_image
 
